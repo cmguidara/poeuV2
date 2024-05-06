@@ -1,0 +1,68 @@
+{% extends 'paginas/modelo.html' %}
+
+
+{% block titulo %}
+<title>Cadastro</title>
+{% endblock %}
+
+{% block conteudo %}
+{% load static %}
+
+{% if user.perfil.nome_completo %}
+
+
+<div class="px-4 py-5 my-5 text-center">
+ <h1 class="display-5 fw-bold">Lista de Vagas Cadastradas</h1>
+  <p>Olá {{ user.perfil.nome_completo }}!  As seguintes vagas estão cadastradas no POEU:</p>
+</div>
+
+<div>
+    <a href="{% url 'cadastrar-vaga' %}">
+        <button class="btn btn-primary">Cadastrar nova vaga</button>
+    </a>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Opções</th>
+        </tr>
+        {% for vaga in object_list %}
+        <tr>
+            <td>{{ vaga.nome }}</td>
+            <td>{{ vaga.empresa }}</td>
+            <td>
+                <a href="{% url 'editar-vaga' vaga.pk %}" class="btn">Editar</a>
+                <a href="{% url 'excluir-vaga' vaga.pk %}" class="btn">Excluir</a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma vaga registrada</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+{% else %}
+
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5">Você precisa completar seu cadastro!</h1>
+        <p>
+           <a href="{% url 'perfil' %}">
+                <button class="btn btn-primary btn-lg">Meus Dados</button>
+           </a>
+        </p>
+
+
+
+    </div>
+
+{% endif %}
+
+{% endblock %}

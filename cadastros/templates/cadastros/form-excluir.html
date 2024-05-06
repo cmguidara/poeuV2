@@ -1,0 +1,28 @@
+{% extends 'paginas/modelo.html' %}
+
+ {% block titulo %}
+<title>Cadastro</title>
+ {% endblock %}
+
+{% block conteudo %}
+<div class="px-4 py-5 my-5 text-center">
+ <h1 class="display-5 fw-bold">Exluir Cadastro de Empresa</h1>
+    <h2>Por gentileza, confirme para excluir o registro:</h2>
+</div>
+
+<div style="padding-left:20px">
+    <form action="" method="POST">
+
+        <p>Deseja exluir o registro: <b> {{ object }} </b> ?</p>
+
+        {% csrf_token %}
+        {{ form.as_p}}
+
+        <button type="submit">Excluir</button>
+
+    </form>
+
+
+</div>
+
+{% endblock %}

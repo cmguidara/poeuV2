@@ -1,0 +1,40 @@
+
+
+{% extends 'paginas/modelo.html' %}
+
+
+
+ {% block titulo %}
+<title>Início</title>
+ {% endblock %}
+
+{% block conteudo %}
+
+{% load static %}
+
+<div style="padding-left:16px">
+  <h1>POEU - Vinhedo</h1>
+  <h2>Portal de Oportunidades de Estágio Univesp</h2>
+
+    <div>
+
+        <p>Bem vindo ao portal de oportunidades de estágio da região de Vinhedo para alunos da Universidade Virtual do Estado de São Paulo (UNIVESP)</p>
+
+        <div>
+            <table class="table text-center">
+                <tr>
+                  <th><img src="{% static 'img/empresa.png' %}" alt="Icone de empresa"></th>
+                  <th><img src="{% static 'img/estudante.png' %}" alt="Icone de estudante"></th>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'listar-vagas' %}">EMPRESA</a></td>
+                    <td><a href="{% url 'mural' %}">ALUNO</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+

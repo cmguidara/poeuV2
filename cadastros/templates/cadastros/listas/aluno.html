@@ -1,0 +1,45 @@
+{% extends 'paginas/modelo.html' %}
+
+
+{% block titulo %}
+<title>Cadastro</title>
+{% endblock %}
+
+{% block conteudo %}
+{% load static %}
+
+<div class="px-4 py-5 my-5 text-center">
+ <h1 class="display-5 fw-bold">Lista de Vagas Cadastradas</h1>
+  <p>As seguintes vagas estão cadastradas no POEU:</p>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Descrição</th>
+            <th>Inscrição</th>
+        </tr>
+        {% for vaga in object_list %}
+        <tr>
+            <td>{{ vaga.nome }}</td>
+            <td>{{ vaga.empresa }}</td>
+            <td>{{ vaga.descricao }}</td>
+            <td> <a href="{{ vaga.link }}">Link
+                </a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma vaga registrada</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+
+{% endblock %}

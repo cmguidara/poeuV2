@@ -1,0 +1,46 @@
+{% extends 'paginas/modelo.html' %}
+
+
+{% block titulo %}
+<title>Cadastro</title>
+{% endblock %}
+
+{% block conteudo %}
+{% load static %}
+
+<div class="px-4 py-5 my-5 text-center">
+ <h1 class="display-5 fw-bold">Lista de Empresas Cadastradas</h1>
+  <p>As seguintes empresas estão cadastradas no POEU:</p>
+  <a href="cadastrar-empresa" class="btn btn-primary">Cadastrar nova empresa</a>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Opções</th>
+        </tr>
+        {% for empresa in object_list %}
+        <tr>
+            <td>{{ empresa.nome }}</td>
+            <td>{{ empresa.cnpj }}</td>
+            <td>
+                <a href="{% url 'editar-empresa' empresa.pk %}" >Editar</a>
+                <a href="{% url 'excluir-empresa' empresa.pk %}" >Excluir</a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma empresa registrada</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+
+{% endblock %}
